@@ -27,8 +27,6 @@ def index():
                 respuesta = request.form[pregunta['nombre']]
                 pregunta['respuesta'] = respuesta
                 respuestas[pregunta['pregunta']] = respuesta
-        with open('respuestas.json', 'w') as f:
-            json.dump(respuestas, f)
 
         # Crear documento Word con respuestas
         document = Document()
