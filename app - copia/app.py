@@ -1,11 +1,8 @@
 import os
 import json
 from flask import Flask, jsonify, render_template, request
-
 from docx import Document
 from docx.shared import Inches
-from dotenv import load_dotenv
-
 from dotenv import load_dotenv
 
 load_dotenv('./.flaskenv')
@@ -15,31 +12,35 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     preguntas = [
-            {"texto": "¿Cuál es tu nombre?", "nombre": "nombre", "respuesta": ""},
-            {"texto": "¿Cuál es tu edad?", "nombre": "edad", "respuesta": ""},
-            {"texto": "¿Cuál es tu género?", "nombre": "genero", "respuesta": ""}
+        {"tipo": "texto", "pregunta": "¿Cuál es tu nombre?", "nombre": "nombre", "respuesta": ""},
+        {"tipo": "seleccion", "pregunta": "¿Eres mayor de edad?", "nombre": "mayor_edad", "opciones": ["Sí", "No"], "respuesta": ""}
     ]
 
     if request.method == 'POST':
         respuestas = {}
         for pregunta in preguntas:
-            respuesta = request.form[pregunta['nombre']]
-            pregunta['respuesta'] = respuesta
-            respuestas[pregunta['texto']] = respuesta
+            if pregunta['tipo'] == 'texto':
+                respuesta = request.form[pregunta['nombre']]
+                pregunta['respuesta'] = respuesta
+                respuestas[pregunta['pregunta']] = respuesta
+            elif pregunta['tipo'] == 'seleccion':
+                respuesta = request.form[pregunta['nombre']]
+                pregunta['respuesta'] = respuesta
+                respuestas[pregunta['pregunta']] = respuesta
+        with open('respuestas.json', 'w') as f:
+            json.dump(respuestas, f)
 
-        # Crear el documento Word y agregar las respuestas
+        # Crear documento Word con respuestas
         document = Document()
-        document.add_heading('Respuestas del cuestionario', 0)
+        document.add_heading('Respuestas de la encuesta')
         for pregunta in preguntas:
-            document.add_paragraph(f"{pregunta['texto']}: {pregunta['respuesta']}", style='List Bullet')
+            document.add_heading(pregunta['pregunta'], level=2)
+            document.add_paragraph(pregunta['respuesta'])
         document.save('respuestas.docx')
-        
+
         return 'Formulario enviado correctamente'
 
     return render_template('index.html', preguntas=preguntas)
 
 if __name__ == '__main__':
     app.run()
-
-
-
