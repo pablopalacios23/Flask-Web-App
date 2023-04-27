@@ -33,7 +33,7 @@ def index():
         for pregunta in preguntas:
             document.add_paragraph(f"{pregunta['texto']}: {pregunta['respuesta']}", style='List Bullet')
         document.save('respuestas.docx')
-
+        
         return 'Formulario enviado correctamente'
 
     return render_template('index.html', preguntas=preguntas)
