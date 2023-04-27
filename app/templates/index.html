@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+<h1>Cuestionario, {{ name }}</h1>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<div id="app">
+  <form>
+    <div v-for="pregunta in preguntas" :key="pregunta.id">
+      <label>{{ pregunta.texto }}</label>
+      <input type="text" :name="pregunta.texto" v-model="respuestas[pregunta.texto]">
+    </div>
+    <button type="button" @click="enviar">Enviar</button>
+  </form>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      preguntas: [
+        { id: 1, texto: "¿Cuál es tu nombre?" },
+        { id: 2, texto: "¿Cuál es tu edad?" },
+        { id: 3, texto: "¿Cuál es tu género?" }
+      ],
+      respuestas: {}
+    },
+    methods: {
+      enviar: function () {
+        axios.post('/', this.respuestas)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    }
+  });
+</script>
+
+{% endblock %}
+
