@@ -46,7 +46,7 @@ def guardar_respuestas():
     # print("Se supone que conecta correctamente")
 
     for pregunta, respuesta in respuestas.items():
-        consulta = "INSERT INTO respuestas (pregunta, respuesta) VALUES (%s, %s)"
+        consulta = "INSERT INTO Marco Organizativo (pregunta, respuesta) VALUES (%s, %s)"
         valores = (pregunta, respuesta)
         cursor.execute(consulta, valores)
 
