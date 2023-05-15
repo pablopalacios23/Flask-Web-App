@@ -1,33 +1,20 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask SurveyJS</title>
+</head>
+<body>
+    <div>
+      <ul>
+        <li>
+          <a href="/cuestionario">Rellenar cuestionario</a>
+        </li>
+        <li>
+          <a href="/generar_docx">Descargar documento con respuestas del test</a>
+        </li>
+      </ul>
+    </div>
 
-{% block content%}
-
-<h1>Cuestionario audidat{{ name }}</h1>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-<form method="POST">
-  {% for pregunta in preguntas %}
-    {% if pregunta.tipo == 'seleccion' %}
-      <div class="yesno">
-        <h3>{{ pregunta.pregunta }}</h3>
-        <label>
-          <input type="radio" name="{{ pregunta.nombre }}" value="si"> Si
-        </label>
-        <label>
-          <input type="radio" name="{{ pregunta.nombre }}" value="no"> No
-        </label>
-      </div>
-    {% else %}
-      <div class="question">
-        <h3>{{ pregunta.pregunta }}</h3>
-        <input type="text" name="{{ pregunta.nombre }}">
-      </div>
-    {% endif %}
-  {% endfor %}
-  <input type="submit" value="Enviar">
-</form>
-
-{% endblock %}
-
-
-
+</body>
+</html>
