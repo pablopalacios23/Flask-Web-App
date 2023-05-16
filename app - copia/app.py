@@ -37,18 +37,12 @@ def guardar_respuestas():
     f = open("respuestas/respuestas.json", "w")
     f.write(respuestas_json)
     f.close()
-    
-    # print("Llega aquí")
 
     conexion = conectar_bd()
     cursor = conexion.cursor()
-
-    # print("Se supone que conecta correctamente")
-
-    for pregunta, respuesta in respuestas.items():
-        consulta = "INSERT INTO Marco Organizativo (pregunta, respuesta) VALUES (%s, %s)"
-        valores = (pregunta, respuesta)
-        cursor.execute(consulta, valores)
+    
+    consulta = "INSERT INTO Marco_Organizativo (Nombre, Apellidos, q1A, q1B, q2A, q2B, q2C, q2D, q3A, q3B, q3C, q4A, q4B) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    cursor.execute(consulta, tuple(respuestas.values()))
 
     conexion.commit()
     cursor.close()

@@ -8,13 +8,13 @@ const json = {
       "elements": [
        {
         "type": "text",
-        "name": "First_name",
+        "name": "Nombre",
         "title": "Nombre",
         "isRequired": true
        },
        {
         "type": "text",
-        "name": "Last_name",
+        "name": "Apellidos",
         "title": "Apellidos",
         "isRequired": true
        },
