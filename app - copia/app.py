@@ -38,17 +38,20 @@ def guardar_respuestas():
     f.write(respuestas_json)
     f.close()
 
-    conexion = conectar_bd()
-    cursor = conexion.cursor()
+    data = [tuple(respuestas.values())]
+    print(data)
+
+    # conexion = conectar_bd()
+    # cursor = conexion.cursor()
     
-    consulta = "INSERT INTO Marco_Organizativo (Nombre, Apellidos, q1A, q1B, q2A, q2B, q2C, q2D, q3A, q3B, q3C, q4A, q4B) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    cursor.execute(consulta, tuple(respuestas.values()))
+    # consulta = "INSERT INTO Marco_Organizativo (Nombre, Apellidos, q1A, q1B, q2A, q2B, q2C, q2D, q3A, q3B, q3C, q4A, q4B) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    # cursor.execute(consulta, tuple(respuestas.values()))
 
-    conexion.commit()
-    cursor.close()
-    conexion.close()
+    # conexion.commit()
+    # cursor.close()
+    # conexion.close()
 
-    return "OK"
+    # return "OK"
 
 
 @app.route('/generar_docx')
