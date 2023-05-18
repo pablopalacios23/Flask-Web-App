@@ -1,15 +1,15 @@
 {
-  "Nombre": "Andrea",
+  "Nombre": "Pablo",
   "Apellidos": "Palacios L\u00f3pez",
-  "q1A": "No",
-  "q1B": "No",
-  "q2A": "No",
-  "q2B": "No",
-  "q2C": "No",
-  "q2D": "No",
-  "q3A": "No",
-  "q3B": "No",
-  "q3C": "No",
+  "q1A": "Si",
+  "q1B": "Si",
+  "q2A": "Si",
+  "q2B": "Si",
+  "q2C": "Si",
+  "q2D": "Si",
+  "q3A": "Si",
+  "q3B": "Si",
+  "q3C": "Si",
   "q4A": "Si",
-  "q4B": "No"
+  "q4B": "Si"
 }

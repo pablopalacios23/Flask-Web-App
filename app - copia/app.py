@@ -3,7 +3,6 @@ import io
 from flask import Flask, render_template, request, make_response
 import json
 import docxtpl
-import mysql.connector
 import sqlite3 as sql
 
 app = Flask(__name__)
