@@ -4,21 +4,52 @@ from flask import Flask, render_template, request, make_response
 import json
 import docxtpl
 import mysql.connector
+import sqlite3 as sql
 
 app = Flask(__name__)
 
-# Configuración de la base de datos
-database_config = {
-    'host': 'contabo.audidatservices.com',
-    'port': 3306,
-    'user': 'agustin',
-    'password': 'calf0rni4',
-    'database': 'ppalacios'
-}
+DB_path = "C:/Users/VORPC/Desktop/app - copia/database/marco_organizativo.db"
 
-def conectar_bd():
-    conexion = mysql.connector.connect(**database_config)
-    return conexion
+def createDB():
+    conn = sql.connect(DB_path)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='marco_organizativo'")
+    result = cursor.fetchone()
+
+    if result is not None:
+        conn.close()
+    else:
+        cursor.execute("""CREATE TABLE marco_organizativo (
+        Nombre text, 
+        Apellidos text, 
+        q1A text, 
+        q1B text, 
+        q2A text, 
+        q2B text, 
+        q2C text, 
+        q2D text, 
+        q3A text, 
+        q3B text, 
+        q3C text, 
+        q4A text, 
+        q4B text
+        )""")
+
+        conn.commit()
+        conn.close()
+
+
+def addValues():
+    conn = sql.connect(DB_path)
+    cursor = conn.cursor()
+    respuestas = request.get_json()
+    data = [tuple(respuestas.values())]
+
+    cursor.executemany(""" INSERT INTO marco_organizativo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",data)
+    conn.commit()
+    conn.close()
+
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -38,21 +69,14 @@ def guardar_respuestas():
     f.write(respuestas_json)
     f.close()
 
-    data = [tuple(respuestas.values())]
-    print(data)
+    createDB()
+    addValues()
 
-    # conexion = conectar_bd()
-    # cursor = conexion.cursor()
+    # print(tuple(respuestas.keys()))
+    # print(tuple(respuestas.values()))
+
+    return "OK"
     
-    # consulta = "INSERT INTO Marco_Organizativo (Nombre, Apellidos, q1A, q1B, q2A, q2B, q2C, q2D, q3A, q3B, q3C, q4A, q4B) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    # cursor.execute(consulta, tuple(respuestas.values()))
-
-    # conexion.commit()
-    # cursor.close()
-    # conexion.close()
-
-    # return "OK"
-
 
 @app.route('/generar_docx')
 def generar_docx():
