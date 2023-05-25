@@ -2,52 +2,70 @@ import io
 
 from flask import Flask, render_template, request, make_response
 import json
+import pyodbc
 import docxtpl
-import sqlite3 as sql
+import sqlite3
+from sqlite3 import Error
 
 app = Flask(__name__)
 
-DB_path = "C:/Users/VORPC/Desktop/app - copia/database/marco_organizativo.db"
-
-def createDB():
-    conn = sql.connect(DB_path)
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='marco_organizativo'")
-    result = cursor.fetchone()
-
-    if result is not None:
-        conn.close()
-    else:
-        cursor.execute("""CREATE TABLE marco_organizativo (
-        Nombre text, 
-        Apellidos text, 
-        q1A text, 
-        q1B text, 
-        q2A text, 
-        q2B text, 
-        q2C text, 
-        q2D text, 
-        q3A text, 
-        q3B text, 
-        q3C text, 
-        q4A text, 
-        q4B text
-        )""")
-
-        conn.commit()
-        conn.close()
-
 
 def addValues():
-    conn = sql.connect(DB_path)
-    cursor = conn.cursor()
-    respuestas = request.get_json()
-    data = [tuple(respuestas.values())]
+    with open('C:/Users/VORPC/Desktop/app - copia/respuestas/respuestas.json') as json_file:
+        data = json.load(json_file)
 
-    cursor.executemany(""" INSERT INTO marco_organizativo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",data)
+    respuestas = {}
+    for key, value in data.items():
+        if key.startswith('q'):
+            respuestas[key] = value
+    
+    conn = sqlite3.connect('c:/Users/VORPC/Desktop/app - copia/database/cuestionarios.db')
+
+    # Crear un cursor para ejecutar consultas
+    cursor = conn.cursor()
+
+    # Insertar en la tabla Respuestas
+    cursor.execute("INSERT INTO Respuestas (respuestas_json) VALUES (?)", (json.dumps(respuestas),))
+    respuestas_id = cursor.lastrowid
+
+    # Insertar en la tabla Cuestionario
+    query = "INSERT INTO Cuestionario (nombre, apellidos, id_respuestas) VALUES (?, ?, ?)"
+    values = (data['nombre'], data['apellidos'], respuestas_id)
+    cursor.execute(query, values)
+
+    # Confirmar los cambios y cerrar la conexión
     conn.commit()
     conn.close()
+
+
+
+def createDB():
+    print("Starting...")
+    cnn = None
+    filename = 'C:/Users/VORPC/Desktop/app - copia/database/cuestionarios.db'
+
+    try:
+        with open('part_map_sqlite.sql', 'r') as sql_file:
+            sql = sql_file.read()
+        cnn = sqlite3.connect(filename)
+        print('database connected...')
+        cs = cnn.cursor()
+        cs.executescript(sql)
+        cnn.commit()
+        print('selecting from new table...')
+        # sql = 'Select * From Cuestionario'
+        # cs.execute(sql)
+        # recs = cs.fetchall()
+        # for rec in recs:
+        #     print(rec)
+
+    except Error as e:
+        print(e)
+
+    finally:
+        if cnn: 
+            cnn.close()
+            print('Done')
 
 
 @app.route('/')
@@ -67,6 +85,7 @@ def guardar_respuestas():
     f = open("respuestas/respuestas.json", "w")
     f.write(respuestas_json)
     f.close()
+
 
     createDB()
     addValues()

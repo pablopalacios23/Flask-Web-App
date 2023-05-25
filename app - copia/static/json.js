@@ -1,20 +1,20 @@
 const json = {
-    "title": "Marco organizativo",
+    "title": "Cuestionario audidat",
     "description": "Práctica 1",
     "logoPosition": "right",
     "pages": [
      {
-      "name": "page1",
+      "name": "page2",
       "elements": [
        {
         "type": "text",
-        "name": "Nombre",
+        "name": "nombre",
         "title": "Nombre",
         "isRequired": true
        },
        {
         "type": "text",
-        "name": "Apellidos",
+        "name": "apellidos",
         "title": "Apellidos",
         "isRequired": true
        },
@@ -37,10 +37,11 @@ const json = {
         "valueFalse": "No"
        }
       ],
-      "title": "Política de seguridad"
+      "title": "Marco operacional",
+      "description": "Política de seguridad"
      },
      {
-      "name": "page2",
+      "name": "page3",
       "elements": [
        {
         "type": "boolean",
@@ -80,10 +81,11 @@ const json = {
         "valueFalse": "No"
        }
       ],
-      "title": "Normativa de seguridad"
+      "title": "Marco operacional",
+      "description": "Normativa de seguridad"
      },
      {
-      "name": "page3",
+      "name": "page4",
       "elements": [
        {
         "type": "boolean",
@@ -113,10 +115,11 @@ const json = {
         "valueFalse": "No"
        }
       ],
-      "title": "Procedimiento de seguridad"
+      "title": "Marco operacional",
+      "description": "Procedimiento de seguridad"
      },
      {
-      "name": "page4",
+      "name": "page5",
       "elements": [
        {
         "type": "boolean",
@@ -137,10 +140,8 @@ const json = {
         "valueFalse": "No"
        }
       ],
-      "title": "Proceso de autorización"
-     },
-     {
-      "name": "page5"
+      "title": "Marco operacional",
+      "description": "Proceso de autorización"
      }
     ]
    };
