@@ -1,0 +1,28 @@
+{% block title %}
+Todas las respuestas
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+        <table border="1px" class="table-style">
+            <thead>
+                <td><strong>Cuestionario ID</strong></td>
+                <td><strong>Nombre</strong></td>
+                <td><strong>Apellidos</strong></td>
+                <td><strong>Respuestas</strong></td>
+                <td><strong>Descargar</strong></td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["id"] }}</td>
+                <td>{{ row["nombre"] }}</td>
+                <td>{{ row["apellidos"] }}</td>
+                <td>{{ row["respuestas_json"] }}</td>
+                <td><a class="download-link" href="{{ url_for('generar_docxFromDatabase', usuario=row['id']) }}" target="_blank">Descargar</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

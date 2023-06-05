@@ -150,14 +150,13 @@ const json = {
         "type": "boolean",
         "name": "q5A",
         "title": "¿Ha realizado un análisis de riesgos?",
-        "defaultValue": "true",
+        // "defaultValue": "true",
         "isRequired": true,
         "labelTrue": "Si",
         "valueTrue": "Si",
         "valueFalse": "No"
        }
       ],
-      "visible": false,
       "title": "Marco operacional",
       "description": "Planificación - Análisis de Riesgos"
      },
@@ -277,7 +276,7 @@ const json = {
       "description": "Componentes certificados"
      },
      {
-      "name": "q10",
+      "name": "page10",
       "elements": [
        {
         "type": "checkbox",
@@ -320,7 +319,7 @@ const json = {
       "description": "Control de acceso"
      },
      {
-      "name": "page10",
+      "name": "page11",
       "elements": [
        {
         "type": "checkbox",
@@ -362,7 +361,7 @@ const json = {
       "description": "Requisitos de acceso"
      },
      {
-      "name": "page11",
+      "name": "page12",
       "elements": [
        {
         "type": "checkbox",
@@ -382,7 +381,7 @@ const json = {
       "description": "Segregación de funciones y tareas"
      },
      {
-      "name": "page12",
+      "name": "page13",
       "elements": [
        {
         "type": "checkbox",
@@ -423,7 +422,7 @@ const json = {
       "description": "Proceso de gestión de derechos de acceso"
      },
      {
-      "name": "page13",
+      "name": "page14",
       "elements": [
        {
         "type": "checkbox",
@@ -466,7 +465,7 @@ const json = {
       "description": "Mecanismo de autentificación (usuarios externos)"
      },
      {
-      "name": "page14",
+      "name": "page15",
       "elements": [
        {
         "type": "checkbox",
@@ -518,7 +517,7 @@ const json = {
       "description": "Mecanismo de autentificación (usuarios de la organización)"
      },
      {
-      "name": "page15",
+      "name": "page16",
       "elements": [
        {
         "type": "checkbox",
@@ -560,7 +559,7 @@ const json = {
       "description": "Explotación"
      },
      {
-      "name": "page16",
+      "name": "page17",
       "elements": [
        {
         "type": "checkbox",
@@ -579,7 +578,7 @@ const json = {
       "description": "Configuración de la seguridad"
      },
      {
-      "name": "page17",
+      "name": "page18",
       "elements": [
        {
         "type": "checkbox",
@@ -622,7 +621,7 @@ const json = {
       "description": "Gestión de la configuración de la seguridad"
      },
      {
-      "name": "page18",
+      "name": "page19",
       "elements": [
        {
         "type": "checkbox",
@@ -663,7 +662,7 @@ const json = {
       "description": "Mantenimiento y actualizaciones de seguridad"
      },
      {
-      "name": "page19",
+      "name": "page20",
       "elements": [
        {
         "type": "checkbox",
@@ -706,7 +705,7 @@ const json = {
       "description": "Gestión de cambios"
      },
      {
-      "name": "page20",
+      "name": "page21",
       "elements": [
        {
         "type": "checkbox",

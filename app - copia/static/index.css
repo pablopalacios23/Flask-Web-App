@@ -28,3 +28,38 @@ a {
 a:hover {
   color: #004d80;
 }
+
+
+
+/* Estilos de la tabla */
+.table-style {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table-style th,
+.table-style td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.table-style th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table-style tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Estilos del enlace de descarga */
+.download-link {
+  color: #0f71b3;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
