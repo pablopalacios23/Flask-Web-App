@@ -11,7 +11,8 @@ Todas las respuestas
                 <td><strong>Nombre</strong></td>
                 <td><strong>Apellidos</strong></td>
                 <td><strong>Respuestas</strong></td>
-                <td><strong>Descargar</strong></td>
+                <td><strong>Descargar cuestionario</strong></td>
+                <td><strong>Eliminar cuestionario</strong></td>
             </thead>
 
             {% for row in rows %}
@@ -21,8 +22,9 @@ Todas las respuestas
                 <td>{{ row["apellidos"] }}</td>
                 <td>{{ row["respuestas_json"] }}</td>
                 <td><a class="download-link" href="{{ url_for('generar_docxFromDatabase', usuario=row['id']) }}" target="_blank">Descargar</a></td>
-
+                <td><a href="{{ url_for('eliminar_usuario', usuario=row['id']) }}">Eliminar usuario</a></td>
             </tr>
             {% endfor %}
         </table>
+
 {% endblock %}

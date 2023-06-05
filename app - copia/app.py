@@ -1,6 +1,6 @@
 import io
 
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, make_response, flash, redirect, url_for
 import json
 import pyodbc
 import docxtpl
@@ -175,6 +175,26 @@ def obtener_respuestas_usuario(usuario):
 
     # Si no se encontraron respuestas, retornar None o un valor indicativo según tu lógica de aplicación
     return None
+
+
+@app.route('/eliminar_usuario/<usuario>')
+def eliminar_usuario(usuario):
+    conn = sqlite3.connect('c:/Users/VORPC/Desktop/app - copia/database/cuestionarios.db')
+    cursor = conn.cursor()
+
+    
+    # Eliminar el usuario de la tabla Cuestionario
+    cursor.execute("DELETE FROM Cuestionario WHERE id = ?", (usuario,))
+
+    # Eliminar las respuestas asociadas al usuario de la tabla Respuestas
+    cursor.execute("DELETE FROM Respuestas WHERE id = ?", (usuario,))
+
+    # Confirmar los cambios y cerrar la conexión con la base de datos
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('list'))
+
 
 
 
