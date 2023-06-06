@@ -1,60 +1,6 @@
 {
-  "nombre": "Andr\u00e9s",
-  "apellidos": "Palacios L\u00f3pez",
+  "nombre": "dsf",
+  "apellidos": "sdf",
   "q1A": "No",
-  "q1B": "Si",
-  "q2A": "No",
-  "q2B": "No",
-  "q2C": "Si",
-  "q2D": "Si",
-  "q3A": "Si",
-  "q3B": "Si",
-  "q3C": "Si",
-  "q4A": "Si",
-  "q4B": "Si",
-  "q5A": "Si",
-  "q6A": "Si",
-  "q6B": "Si",
-  "q7A": "Si",
-  "q8A": "Si",
-  "q8B": "Si",
-  "Componentes certificados": [
-    "No Aplica"
-  ],
-  "Control de acceso": [
-    "No aplica"
-  ],
-  "Requisitos de acceso": [
-    "No aplica"
-  ],
-  "q12A": [
-    "Si"
-  ],
-  "Proceso de gesti\u00f3n de derechos de acceso": [
-    "No aplica"
-  ],
-  "Mecanismo de autentificaci\u00f3n (usuarios externos)": [
-    "No aplica"
-  ],
-  "Mecanismo de autentificaci\u00f3n (usuarios de la organizaci\u00f3n)": [
-    "No aplica"
-  ],
-  "Explotaci\u00f3n": [
-    "No aplica"
-  ],
-  "q17A": [
-    "Si"
-  ],
-  "Gesti\u00f3n de la configuraci\u00f3n de la seguridad": [
-    "No aplica"
-  ],
-  "Mantenimiento y actualizaciones de seguridad": [
-    "No aplica"
-  ],
-  "Gesti\u00f3n de cambios": [
-    "No aplica"
-  ],
-  "Protecci\u00f3n frente a c\u00f3digo da\u00f1ino": [
-    "No aplica"
-  ]
+  "q1B": "Si"
 }

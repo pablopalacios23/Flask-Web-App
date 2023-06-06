@@ -22,9 +22,19 @@ Todas las respuestas
                 <td>{{ row["apellidos"] }}</td>
                 <td>{{ row["respuestas_json"] }}</td>
                 <td><a class="download-link" href="{{ url_for('generar_docxFromDatabase', usuario=row['id']) }}" target="_blank">Descargar</a></td>
-                <td><a href="{{ url_for('eliminar_usuario', usuario=row['id']) }}">Eliminar usuario</a></td>
+                <!-- <td><a href="{{ url_for('eliminar_usuario', usuario=row['id']) }}">Eliminar usuario</a></td> -->
+                <td>
+                    <a href="{{ url_for('eliminar_usuario', usuario=row['id']) }}" onclick="return confirmarEliminacion()">Eliminar usuario</a>
+                </td>
+
             </tr>
             {% endfor %}
         </table>
+
+        <script>
+            function confirmarEliminacion() {
+                return confirm("¿Estás seguro de eliminar a este usuario?");
+            }
+        </script>
 
 {% endblock %}

@@ -192,8 +192,22 @@ def eliminar_usuario(usuario):
     # Confirmar los cambios y cerrar la conexión con la base de datos
     conn.commit()
     conn.close()
-
+    
     return redirect(url_for('list'))
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Aquí puedes implementar la lógica de verificación de inicio de sesión,
+        # como verificar las credenciales del usuario en una base de datos o sistema de autenticación.
+
+        # Si las credenciales son válidas, puedes redirigir al usuario a una página de inicio de sesión exitoso.
+        # Por ejemplo, si tienes una ruta llamada '/dashboard' para el panel de control del usuario:
+        return redirect('/dashboard')
+    else:
+        # Si es un GET, simplemente renderiza la plantilla de inicio de sesión.
+        return render_template('login.html')
 
 
 
