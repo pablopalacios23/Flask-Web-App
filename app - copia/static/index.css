@@ -102,3 +102,31 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #0069d9;
 }
+
+.login-title {
+  color: #0077b6;
+  font-size: 39px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10%;
+}
+
+
+
+
+
+
+/*Estilos del apartado Registrarse */
+
+.flash-messages {
+  list-style-type: none;
+  padding: 10px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 10px;
+}
+
+.flash-message {
+  margin-bottom: 5px;
+}

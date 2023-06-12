@@ -1,6 +1,96 @@
 {
-  "nombre": "dsf",
-  "apellidos": "sdf",
-  "q1A": "No",
-  "q1B": "Si"
+  "q5A": "Si",
+  "nombre": "Pablo",
+  "apellidos": "Palacios L\u00f3pez",
+  "q1A": "Si",
+  "q1B": "Si",
+  "q2A": "Si",
+  "q2B": "Si",
+  "q2C": "Si",
+  "q2D": "Si",
+  "q3A": "Si",
+  "q3B": "Si",
+  "q3C": "Si",
+  "q4A": "Si",
+  "q4B": "Si",
+  "q6A": "Si",
+  "q6B": "Si",
+  "q7A": "Si",
+  "q8A": "Si",
+  "q8B": "Si",
+  "Componentes certificados": [
+    " Aplica"
+  ],
+  "q9A": "Si",
+  "q9B": "Si",
+  "Control de acceso": [
+    "Aplica"
+  ],
+  "q10A": "Si",
+  "q10B": "Si",
+  "Requisitos de acceso": [
+    "Aplica"
+  ],
+  "q11A": "Si",
+  "q11B": "Si",
+  "q12A": [
+    "Si"
+  ],
+  "Proceso de gesti\u00f3n de derechos de acceso": [
+    "Aplica"
+  ],
+  "q13A": "Si",
+  "q13B": "Si",
+  "Mecanismo de autentificaci\u00f3n (usuarios externos)": [
+    "Aplica"
+  ],
+  "q14A": "Si",
+  "q14B": "Si",
+  "Mecanismo de autentificaci\u00f3n (usuarios de la organizaci\u00f3n)": [
+    "Aplica"
+  ],
+  "q15A": "Si",
+  "q15B": "Si",
+  "q15C": "Si",
+  "Explotaci\u00f3n": [
+    "Aplica"
+  ],
+  "q16A": "Si",
+  "q16B": "Si",
+  "q17A": [
+    "Si"
+  ],
+  "Gesti\u00f3n de la configuraci\u00f3n de la seguridad": [
+    "Aplica"
+  ],
+  "q18A": "Si",
+  "q18B": "Si",
+  "Mantenimiento y actualizaciones de seguridad": [
+    "Aplica"
+  ],
+  "q19A": "Si",
+  "q19B": "Si",
+  "Gesti\u00f3n de cambios": [
+    "Aplica"
+  ],
+  "q20A": "Si",
+  "q20B": "Si",
+  "Protecci\u00f3n frente a c\u00f3digo da\u00f1ino": [
+    "Aplica"
+  ],
+  "q21A": "Si",
+  "q21B": "Si",
+  "q22A": "Si",
+  "q22B": "Si",
+  "Registro de la actividad": [
+    "Aplica"
+  ],
+  "q23A": "Si",
+  "q23B": "SI",
+  "q24A": "Si",
+  "Protecci\u00f3n de claves criptogr\u00e1ficas": [
+    "Aplica"
+  ],
+  "q25A": "Si",
+  "q25B": "Si"
 }

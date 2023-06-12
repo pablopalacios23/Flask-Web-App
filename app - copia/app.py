@@ -10,6 +10,9 @@ import ast
 
 app = Flask(__name__)
 app.static_folder = 'static'
+app.secret_key = 'hola'
+# app = Flask(__name__, static_url_path='/static')
+
 
 def createDB():
     print("Starting...")
@@ -204,13 +207,49 @@ def login():
 
         # Si las credenciales son válidas, puedes redirigir al usuario a una página de inicio de sesión exitoso.
         # Por ejemplo, si tienes una ruta llamada '/dashboard' para el panel de control del usuario:
-        return redirect('/dashboard')
+        return redirect('index')
     else:
         # Si es un GET, simplemente renderiza la plantilla de inicio de sesión.
         return render_template('login.html')
+    
+    
+@app.route('/registrar', methods=['GET', 'POST'])
+def registrar():
 
+    error_messages = []
+    sucess_messages = []
 
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+        
+        # Validar que el usuario y la contraseña cumplan con los requisitos necesarios
+        if len(username) < 3:
+            flash('El nombre de usuario debe tener al menos 3 caracteres.', 'error')
+            return redirect(url_for('registrar_usuario'))
 
+        if len(password) < 6:
+            flash('La contraseña debe tener al menos 6 caracteres.', 'error')
+            return redirect(url_for('registrar_usuario'))
+
+        if password != confirm_password:
+            flash('Las contraseñas no coinciden.', 'error')
+            return redirect(url_for('registrar_usuario'))
+
+        # Guardar el usuario en la base de datos o en otro sistema de almacenamiento
+        # (Aquí puedes agregar tu lógica específica para guardar el usuario)
+
+        # Redirigir al usuario a una página de inicio de sesión o a otra página de tu elección
+        flash('Usuario registrado exitosamente. Por favor, inicia sesión.', 'success')
+        return redirect(url_for('login'))
+    
+    return redirect(url_for('registrar_usuario'))
+        
+
+@app.route('/registrar_usuario')
+def registrar_usuario():
+    return render_template('registrar_usuario.html')
 
 if __name__ == '__main__':
     app.run()
